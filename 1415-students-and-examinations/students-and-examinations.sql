@@ -1,14 +1,3 @@
-/* Write your T-SQL query statement below */
--- select
---     st.student_id
---     ,e.subject_name
---     ,st.student_name
---     ,count(*)
--- from examinations e
--- full outer join students st
---     on st.student_id = e.student_id
--- group by st.student_id , e.subject_name , st.student_name;
-
 select
     s.student_id
     ,s.student_name
