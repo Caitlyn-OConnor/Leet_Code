@@ -13,9 +13,7 @@
     COUNT(time_stamp) 
     FOR action IN ([confirmed], [timeout])
     ) AS PivotTable
-
-    
-    )
+)
 
 select 
     s.user_id
