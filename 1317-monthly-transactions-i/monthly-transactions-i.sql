@@ -1,6 +1,6 @@
 WITH cte AS (
     SELECT
-        ISNULL(country, 'null') AS country_key,  -- for joining
+        ISNULL(country, 'null') AS country_key,
         FORMAT(trans_date, 'yyyy-MM') AS month,
         COUNT(DISTINCT id) AS approved_count,
         SUM(amount) AS approved_total_amount
@@ -13,7 +13,7 @@ WITH cte AS (
 
 SELECT 
     FORMAT(t.trans_date, 'yyyy-MM') AS month,
-    t.country,  -- original country (will show NULLs naturally)
+    t.country, 
     COUNT(t.id) AS trans_count,
     SUM(t.amount) AS trans_total_amount,
     COALESCE(MAX(cte.approved_count), 0) AS approved_count,
@@ -21,7 +21,7 @@ SELECT
 FROM transactions t
 LEFT JOIN cte
     ON FORMAT(t.trans_date, 'yyyy-MM') = cte.month
-    AND ISNULL(t.country, 'null') = cte.country_key  -- match using surrogate key
+    AND ISNULL(t.country, 'null') = cte.country_key 
 GROUP BY 
     FORMAT(t.trans_date, 'yyyy-MM'),
     t.country;
