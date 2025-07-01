@@ -18,8 +18,8 @@ categories as (
 )
 
 select
-    categories.category
+    c.category
     , isnull(count(distinct cte.account_id),0) as accounts_count
 from cte 
-right join categories on categories.category = cte.category
-group by categories.category
+right join categories c on c.category = cte.category
+group by c.category
