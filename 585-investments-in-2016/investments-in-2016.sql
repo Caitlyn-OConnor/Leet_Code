@@ -30,6 +30,5 @@ ll_cte as (
 select 
     round(sum(tiv_2016),2) as tiv_2016
 from insurance i
-left join cnt_cte c on c.tiv_2015 = i.tiv_2015
-left join ll_cte l on l.lat = i.lat and l.lon = i.lon
-where c.tiv_2015 is not null and l.lat is not null and l.lon is not null
+inner join cnt_cte c on c.tiv_2015 = i.tiv_2015
+inner join ll_cte l on l.lat = i.lat and l.lon = i.lon
